@@ -14,7 +14,7 @@ data:
         }
         ready
         prometheus :9153
-        forward . /etc/resolv.conf {
+        forward . 8.8.8.8 8.8.4.4 {
           max_concurrent 1000
         }
         cache 300 {
