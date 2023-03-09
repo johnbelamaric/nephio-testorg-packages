@@ -1,0 +1,13 @@
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariantSet
+metadata:
+  name: cachingdns-distribution
+spec:
+  upstream:
+    package:
+      repo: nephio-testorg-packages
+      name: cachingdns-distribution
+    revision: v3
+  targets:
+  - repositories:
+      nephio.org/site-type: regional

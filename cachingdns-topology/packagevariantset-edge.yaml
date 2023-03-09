@@ -1,0 +1,13 @@
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariantSet
+metadata:
+  name: cachingdns-edge
+spec:
+  upstream:
+    package:
+      repo: nephio-testorg-packages
+      name: cachingdns-edge
+    revision: v2
+  targets:
+  - repositories:
+      nephio.org/site-type: edge
