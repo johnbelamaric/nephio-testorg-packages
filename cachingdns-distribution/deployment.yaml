@@ -6,7 +6,7 @@ metadata: # kpt-merge: example/coredns-caching
     package-instance: coredns-caching
   namespace: example
   annotations:
-    internal.kpt.dev/upstream-identifier: apps|Deployment|example|coredns-caching
+    internal.kpt.dev/upstream-identifier: 'apps|Deployment|example|coredns-caching'
 spec:
   strategy:
     type: RollingUpdate
@@ -28,14 +28,11 @@ spec:
         imagePullPolicy: IfNotPresent
         resources:
           limits:
-            memory: 500Mi
-            cpu: 1000m
+            memory: 170Mi
           requests:
-            cpu: 1000m
-            memory: 500Mi
-        args:
-        - "-conf"
-        - /etc/coredns/Corefile
+            cpu: 100m
+            memory: 70Mi
+        args: ["-conf", "/etc/coredns/Corefile"]
         volumeMounts:
         - name: config-volume
           mountPath: /etc/coredns
