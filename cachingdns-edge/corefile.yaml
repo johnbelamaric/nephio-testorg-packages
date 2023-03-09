@@ -4,7 +4,7 @@ metadata: # kpt-merge: example/coredns-caching
   name: coredns-caching
   namespace: example
   annotations:
-    internal.kpt.dev/upstream-identifier: "|ConfigMap|example|coredns-caching"
+    internal.kpt.dev/upstream-identifier: '|ConfigMap|example|coredns-caching'
 data:
   Corefile: |
     .:53 {
@@ -18,8 +18,8 @@ data:
           max_concurrent 1000
         }
         cache 300 {
-          success 16384
-          denial 16384
+          success 2048
+          denial 2048
           prefetch 100
           serve_stale
         }
