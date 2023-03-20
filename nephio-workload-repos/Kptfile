@@ -6,3 +6,7 @@ metadata:
     config.kubernetes.io/local-config: "true"
 info:
   description: Creates a workload cluster repository and registration with Nephio.
+pipeline:
+  validators:
+  - image: gcr.io/kpt-fn/kubeval:v0.3.0
+    configPath: kubeval-config.yaml
