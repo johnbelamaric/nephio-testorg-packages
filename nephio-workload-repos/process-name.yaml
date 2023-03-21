@@ -7,7 +7,7 @@ metadata:
 source: |
   for r in ctx.resource_list["items"]:
     if r["kind"] == "ConfigMap" and r["metadata"]["name"] == "kptfile.kpt.dev":
-      parts = r["metadata"]["name"].split("-")
+      parts = r["data"]["name"].split("-")
       env = parts[0]
       region = parts[1] + "-" + parts[2]
       siteType = parts[3]
@@ -21,3 +21,5 @@ source: |
       r["metadata"]["name"] = site
       r["spec"]["description"] = "Workloads for " + site
       r["spec"]["git"]["repo"] = "https://github.com/nephio-test/" + env + "-" + site + ".git"
+    if r["kind"] == "Repository" and r["apiVersion"].startswith("github."):
+      r["metadata"]["name"] = name + "-" + site

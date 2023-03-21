@@ -2,8 +2,6 @@ apiVersion: github.go.hein.dev/v1alpha1
 kind: Repository
 metadata:
   name: example
-  labels:
-    foo: bar
 spec:
   organization: nephio-test
   description: Example repository
