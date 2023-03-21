@@ -1,7 +1,7 @@
 apiVersion: fn.kpt.dev/v1alpha1
 kind: StarlarkRun
 metadata:
-  name: prep-set-labels
+  name: process-name
   annotations:
     config.kubernetes.io/local-config: "true"
 source: |
@@ -12,6 +12,7 @@ source: |
       region = parts[1] + "-" + parts[2]
       siteType = parts[3]
       site = region + "-" + siteType + "-" + parts[4]
+      repo = env + "-" + site
   for r in ctx.resource_list["items"]:
     if r["kind"] == "ConfigMap" and r["metadata"]["name"] == "set-labels-config":
       r["data"]["nephio.org/region"] = region
@@ -20,6 +21,6 @@ source: |
     if r["kind"] == "Repository" and r["apiVersion"].startswith("config.porch.kpt.dev"):
       r["metadata"]["name"] = site
       r["spec"]["description"] = "Workloads for " + site
-      r["spec"]["git"]["repo"] = "https://github.com/nephio-test/" + env + "-" + site + ".git"
+      r["spec"]["git"]["repo"] = "https://github.com/nephio-test/" + repo + ".git"
     if r["kind"] == "Repository" and r["apiVersion"].startswith("github."):
-      r["metadata"]["name"] = name + "-" + site
+      r["metadata"]["name"] = repo
