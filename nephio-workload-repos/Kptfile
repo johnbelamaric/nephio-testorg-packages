@@ -1,0 +1,17 @@
+apiVersion: kpt.dev/v1
+kind: Kptfile
+metadata:
+  name: nephio-workload-repos
+  annotations:
+    config.kubernetes.io/local-config: "true"
+info:
+  description: Creates a workload cluster repository and registration with Nephio.
+pipeline:
+  validators:
+    - image: gcr.io/kpt-fn/kubeval:v0.3.0
+      configPath: kubeval-config.yaml
+  mutators:
+    - image: gcr.io/kpt-fn/starlark:v0.5.0
+      configPath: process-name.yaml
+    - image: gcr.io/kpt-fn/set-labels:v0.2.0
+      configPath: set-labels-config.yaml

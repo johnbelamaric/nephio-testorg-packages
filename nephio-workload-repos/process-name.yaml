@@ -1,0 +1,26 @@
+apiVersion: fn.kpt.dev/v1alpha1
+kind: StarlarkRun
+metadata:
+  name: process-name
+  annotations:
+    config.kubernetes.io/local-config: "true"
+source: |
+  for r in ctx.resource_list["items"]:
+    if r["kind"] == "ConfigMap" and r["metadata"]["name"] == "kptfile.kpt.dev":
+      parts = r["data"]["name"].split("-")
+      env = parts[0]
+      region = parts[1] + "-" + parts[2]
+      siteType = parts[3]
+      site = region + "-" + siteType + "-" + parts[4]
+      repo = env + "-" + site
+  for r in ctx.resource_list["items"]:
+    if r["kind"] == "ConfigMap" and r["metadata"]["name"] == "set-labels-config":
+      r["data"]["nephio.org/region"] = region
+      r["data"]["nephio.org/site-type"] = siteType
+      r["data"]["nephio.org/site"] = site
+    if r["kind"] == "Repository" and r["apiVersion"].startswith("config.porch.kpt.dev"):
+      r["metadata"]["name"] = site
+      r["spec"]["description"] = "Workloads for " + site
+      r["spec"]["git"]["repo"] = "https://github.com/nephio-test/" + repo + ".git"
+    if r["kind"] == "Repository" and r["apiVersion"].startswith("github."):
+      r["metadata"]["name"] = repo

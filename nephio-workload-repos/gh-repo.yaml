@@ -1,0 +1,13 @@
+apiVersion: github.go.hein.dev/v1alpha1
+kind: Repository
+metadata:
+  name: example
+spec:
+  organization: nephio-test
+  description: Example repository
+  settings:
+    private: false
+    issues: false
+    wiki: false
+    projects: false
+    template: false

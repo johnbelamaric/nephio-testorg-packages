@@ -1,0 +1,18 @@
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: Repository
+metadata:
+  labels:
+    kpt.dev/deployment-environment: production
+  name: example
+spec:
+  content: Package
+  deployment: true
+  description: Example
+  git:
+    branch: main
+    createBranch: true
+    directory: /
+    repo: https://github.com/nephio-test/example.git
+    secretRef:
+      name: nephio-test-auth
+  type: git
