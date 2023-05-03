@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: regional-endpoints
+  annotations:
+    kpt.dev/config-injection: "required"
+data:
+  db: db.platform.svc
+  auth: auth.platform.svc
