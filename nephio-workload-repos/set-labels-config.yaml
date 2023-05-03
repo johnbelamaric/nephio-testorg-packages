@@ -5,7 +5,7 @@ metadata:
   annotations:
     config.kubernetes.io/local-config: "true"
 data:
-  nephio.org/site-type: example
-  nephio.org/region: example
-  nephio.org/site: example
+  nephio.org/site-type: edge
+  nephio.org/region: us-central1
+  nephio.org/site: us-central1-edge-01
   kpt.dev/deployment-environment: production

@@ -1,7 +1,12 @@
 apiVersion: github.go.hein.dev/v1alpha1
 kind: Repository
 metadata:
-  name: example
+  name: foo-us-central1-edge-01
+  labels:
+    kpt.dev/deployment-environment: production
+    nephio.org/region: us-central1
+    nephio.org/site: us-central1-edge-01
+    nephio.org/site-type: edge
 spec:
   organization: nephio-test
   description: Example repository

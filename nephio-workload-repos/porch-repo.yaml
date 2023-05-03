@@ -3,16 +3,19 @@ kind: Repository
 metadata:
   labels:
     kpt.dev/deployment-environment: production
-  name: example
+    nephio.org/region: us-central1
+    nephio.org/site: us-central1-edge-01
+    nephio.org/site-type: edge
+  name: us-central1-edge-01
 spec:
   content: Package
   deployment: true
-  description: Example
+  description: Workloads for us-central1-edge-01
   git:
     branch: main
     createBranch: true
     directory: /
-    repo: https://github.com/nephio-test/example.git
+    repo: https://github.com/nephio-test/foo-us-central1-edge-01.git
     secretRef:
       name: nephio-test-auth
   type: git
