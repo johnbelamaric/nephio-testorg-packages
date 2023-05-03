@@ -1,0 +1,8 @@
+apiVersion: kpt.dev/v1
+kind: Kptfile
+metadata:
+  name: injection-test
+  annotations:
+    config.kubernetes.io/local-config: "true"
+info:
+  description: Test package for the config injection of PackageVariant
