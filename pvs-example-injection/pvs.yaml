@@ -1,0 +1,17 @@
+apiVersion: config.porch.kpt.dev/v1alpha2
+kind: PackageVariantSet
+metadata:
+  name: pvs-example-injection
+spec:
+  upstream:
+    package: injection-test
+    repo: demo-packages
+    revision: v2
+  targets:
+  - repositorySelector:
+      matchLabels:
+        nephio.org/site-type: regional
+    template:
+      injectors:
+      - kind: ConfigMap
+        nameExpr: "target.labels['nephio.org/region'] + '-endpoints'"

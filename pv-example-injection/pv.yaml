@@ -8,7 +8,7 @@ spec:
     repo: us-east1-edge-02
   upstream:
     package: injection-test
-    repo: nephio-testorg-packages
+    repo: demo-packages
     revision: v2
   injectors:
   - kind: ConfigMap
