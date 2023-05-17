@@ -1,0 +1,15 @@
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: pv-example-injection
+spec:
+  downstream:
+    package: injection-test
+    repo: us-east1-edge-02
+  upstream:
+    package: injection-test
+    repo: nephio-testorg-packages
+    revision: v2
+  injectors:
+  - kind: ConfigMap
+    name: us-east1-endpoints
