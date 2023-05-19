@@ -1,0 +1,12 @@
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: xxx-repo
+spec:
+  upstream:
+    package: repo
+    repo: blueprint-manifests
+    revision: main
+  downstream:
+    package: xxx-repo
+    repo: mgmt

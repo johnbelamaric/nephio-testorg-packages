@@ -11,6 +11,11 @@ replacements:
     fieldPath: data.name
   targets:
   - select:
-      kind: Cluster
+      kind: PackageVariant
+      name: example-cluster
     fieldPaths:
     - metadata.name
+    - spec.downstream.package
+    options:
+      delimiter: '-'
+      index: 0

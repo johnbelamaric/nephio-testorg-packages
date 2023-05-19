@@ -1,0 +1,24 @@
+# apiVersion: config.porch.kpt.dev/v1alpha1
+# kind: PackageVariant
+# metadata:
+#   name: xxx-rootsync
+# spec:
+#   upstream:
+#     package: rootsync
+#     repo: blueprint-manifests
+#     revision: main
+#   downstream:
+#     package: xxx-rootsync
+#     repo: mgmt-staging
+
+  # pipeline:
+  # - image: gcr.io/kpt-fn/search-replace:v0.2.0
+  #   configMap:
+  #     by-path: metadata.**
+  #     by-value-regex: 'yyy(.*)'
+  #     put-value: xxx${1}
+  # - image: gcr.io/kpt-fn/search-replace:v0.2.0
+  #   configMap:
+  #     by-path: spec.**
+  #     by-value-regex: 'yyy(.*)'
+  #     put-value: xxx${1}
