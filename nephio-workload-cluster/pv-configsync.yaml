@@ -1,12 +1,12 @@
-# apiVersion: config.porch.kpt.dev/v1alpha1
-# kind: PackageVariant
-# metadata:
-#   name: xxx-configsync
-# spec:
-#   upstream:
-#     package: configsync
-#     repo: blueprint-manifests
-#     revision: main
-#   downstream:
-#     package: xxx-configsync
-#     repo: mgmt-staging
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: example-configsync
+spec:
+  upstream:
+    package: configsync
+    repo: nephio-testorg-packages
+    revision: v1
+  downstream:
+    package: example-configsync
+    repo: mgmt-staging

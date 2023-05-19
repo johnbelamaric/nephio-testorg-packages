@@ -1,12 +1,12 @@
 apiVersion: config.porch.kpt.dev/v1alpha1
 kind: PackageVariant
 metadata:
-  name: xxx-repo
+  name: example-repo
 spec:
   upstream:
     package: repo
-    repo: blueprint-manifests
-    revision: main
+    repo: nephio-testorg-packages
+    revision: v1
   downstream:
-    package: xxx-repo
+    package: example-repo
     repo: mgmt

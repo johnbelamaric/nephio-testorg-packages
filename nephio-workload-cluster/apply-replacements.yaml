@@ -12,7 +12,6 @@ replacements:
   targets:
   - select:
       kind: PackageVariant
-      name: example-cluster
     fieldPaths:
     - metadata.name
     - spec.downstream.package
