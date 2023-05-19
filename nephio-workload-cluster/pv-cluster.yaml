@@ -1,12 +1,12 @@
 apiVersion: config.porch.kpt.dev/v1alpha1
 kind: PackageVariant
 metadata:
-  name: test-cluster
+  name: example-cluster
 spec:
   upstream:
     package: nephio-cluster-capi-kind
     repo: nephio-testorg-packages
     revision: v1
   downstream:
-    package: test-cluster
+    package: example-cluster
     repo: mgmt
