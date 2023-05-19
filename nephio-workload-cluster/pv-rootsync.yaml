@@ -1,0 +1,12 @@
+apiVersion: config.porch.kpt.dev/v1alpha1
+kind: PackageVariant
+metadata:
+  name: example-rootsync
+spec:
+  upstream:
+    package: rootsync
+    repo: nephio-testorg-packages
+    revision: v1
+  downstream:
+    package: example-rootsync
+    repo: mgmt-staging
