@@ -6,6 +6,3 @@ metadata:
     config.kubernetes.io/local-config: "true"
 data:
   name: example
-  upstreamRepo: demo-packages
-  downstreamRepo: mgmt
-  stagingRepo: mgmt-staging
