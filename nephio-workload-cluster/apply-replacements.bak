@@ -1,0 +1,57 @@
+apiVersion: fn.kpt.dev/v1alpha1
+kind: ApplyReplacements
+metadata:
+  name: propagate-name
+  annotations:
+    config.kubernetes.io/local-config: "true"
+replacements:
+- source:
+    kind: ConfigMap
+    name: kptfile.kpt.dev
+    fieldPath: data.name
+  targets:
+  - select:
+      kind: PackageVariant
+    fieldPaths:
+    - metadata.name
+    - spec.downstream.package
+    options:
+      delimiter: '-'
+      index: 0
+- source:
+    kind: ConfigMap
+    name: kptfile.kpt.dev
+    fieldPath: data.upstreamRepo
+  targets:
+  - select:
+      kind: PackageVariant
+    fieldPaths:
+    - spec.upstream.repo
+- source:
+    kind: ConfigMap
+    name: kptfile.kpt.dev
+    fieldPath: data.downstreamRepo
+  - select:
+      kind: PackageVariant
+      name: example-cluster
+    fieldPaths:
+    - spec.downstream.repo
+  - select:
+      kind: PackageVariant
+      name: example-repo
+    fieldPaths:
+    - spec.downstream.repo
+- source:
+    kind: ConfigMap
+    name: kptfile.kpt.dev
+    fieldPath: data.stagingRepo
+  - select:
+      kind: PackageVariant
+      name: example-configsync
+    fieldPaths:
+    - spec.downstream.repo
+  - select:
+      kind: PackageVariant
+      name: example-rootsync
+    fieldPaths:
+    - spec.downstream.repo

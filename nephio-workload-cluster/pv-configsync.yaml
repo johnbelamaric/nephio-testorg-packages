@@ -5,7 +5,7 @@ metadata:
 spec:
   upstream:
     package: configsync
-    repo: nephio-testorg-packages
+    repo: demo-packages
     revision: v1
   downstream:
     package: example-configsync

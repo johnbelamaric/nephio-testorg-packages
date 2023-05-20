@@ -6,6 +6,6 @@ metadata:
     config.kubernetes.io/local-config: "true"
 data:
   name: example
-  upstreamRepo: nephio-testorg-packages
+  upstreamRepo: demo-packages
   downstreamRepo: mgmt
   stagingRepo: mgmt-staging
