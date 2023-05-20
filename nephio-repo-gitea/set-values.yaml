@@ -9,7 +9,7 @@ source: |-
   def set_values(resources):
     for r in resources:
       if krmfn.match_gvk(r, "v1", "ConfigMap") and krmfn.match_name(r, "kptfile.kpt.dev"):
-        siteName = r["data"]["siteName"]
+        siteName = r["data"].get("siteName", "default")
         name = r["data"]["name"]
     for r in resources:
       if krmfn.match_gvk(r, "infra.nephio.org/v1alpha1", "Repository"):
