@@ -18,3 +18,40 @@ replacements:
     options:
       delimiter: '-'
       index: 0
+- source:
+    kind: ConfigMap
+    name: kptfile.kpt.dev
+    fieldPath: data.upstreamRepo
+  targets:
+  - select:
+     kind: PackageVariant
+    fieldPaths:
+    - upstream.repo
+- source:
+    kind: ConfigMap
+    name: kptfile.kpt.dev
+    fieldPath: data.downstreamRepo
+  - select:
+     kind: PackageVariant
+     name: example-cluster
+    fieldPaths:
+    - downstream.repo
+  - select:
+     kind: PackageVariant
+     name: example-repo
+    fieldPaths:
+    - downstream.repo
+- source:
+    kind: ConfigMap
+    name: kptfile.kpt.dev
+    fieldPath: data.stagingRepo
+  - select:
+     kind: PackageVariant
+     name: example-configsync
+    fieldPaths:
+    - downstream.repo
+  - select:
+     kind: PackageVariant
+     name: example-rootsync
+    fieldPaths:
+    - downstream.repo
