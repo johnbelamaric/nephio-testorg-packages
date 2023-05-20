@@ -4,9 +4,17 @@ metadata:
   name: example-repo
 spec:
   upstream:
-    package: repo
+    package: nephio-repo-gitea
     repo: demo-packages
     revision: v1
   downstream:
     package: example-repo
     repo: mgmt
+  packageContext:
+    data:
+      siteName: example
+  pipeline:
+    mutators:
+    - image: gcr.io/kpt-fn/set-annotations:v0.1.4
+      configMap:
+        nephio.org/site: example

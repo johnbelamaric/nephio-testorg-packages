@@ -10,3 +10,11 @@ spec:
   downstream:
     package: example-cluster
     repo: mgmt
+  packageContext:
+    data:
+      siteName: example
+  pipeline:
+    mutators:
+    - image: gcr.io/kpt-fn/set-annotations:v0.1.4
+      configMap:
+        nephio.org/site: example

@@ -8,16 +8,13 @@ replacements:
 - source:
     kind: ConfigMap
     name: kptfile.kpt.dev
-    fieldPath: data.name
+    fieldPath: data.siteName
   targets:
   - select:
       kind: PackageVariant
     fieldPaths:
     - metadata.name
     - spec.downstream.package
-    - spec.packageContext.data.siteName
-    - spec.pipeline.mutators.[image=gcr.io/kpt-fn/set-annotations:v0.1.4].configMap.[nephio.org/site]
     options:
       delimiter: '-'
       index: 0
-      create: true
